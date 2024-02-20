@@ -1,0 +1,22 @@
+.ti{
+    color: #8a2be2;
+}
+
+.shadow{
+    filter: drop-shadow(0 0 0.1px
+    #8a2be2 );
+}
+
+.anchor{
+    text-decoration: none;
+}
+
+.nav-item{
+    color: #8400ff;
+}
+
+.fi{
+    color: #8a2be2;
+    filter: drop-shadow(0.5px 0.5px 10px
+    rgba(0, 0, 0, 0.616));
+}

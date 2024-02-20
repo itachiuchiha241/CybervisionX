@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'main' %}
+<div class="row mt-3">
+    <div class="col-md-4 bg-light"><!-------Filter Side Bar Starts------->
+        <h3 class="fi">Filter By Category</h3>
+        <hr>
+        <p><a class="anchor" href="/catfilter/1">By Antivirus Keys</a></p>
+        <p><a class="anchor" href="/catfilter/2">By Microsoft office Keys</a></p>
+        <p><a class="anchor" href="/catfilter/3">By Windows Keys</a></p>
+        <hr>
+
+        <form action="/range">
+            <div class="mb-3">   <!-----Min Value----->
+                <label for="input1" class="form-label">Min value:</label>
+                <input type="number" class="form-control" id="input1" placeholder="Minimum Value">
+            </div>
+            <div class="mb-3">   <!-----Max Value----->
+                <label for="input2" class="form-label">Max Value:</label>
+                <input type="number" class="form-control" id="input2" placeholder="Maximum Value">
+            </div>
+            <div class="mb-3">   <!----Submit Button----->
+                <input type="submit"  value="submit" class="btn btn" style="background-color: rgb(132, 53, 243); color: white;">
+            </div>
+        </form>
+        <h5 class="fi">Sort By Price</h5>
+        <hr>
+        <p><a class="anchor" href="/sort/0"> Low to High</a></p>
+        <p><a class="anchor" href="/sort/1">High to Low</a></p>
+    </div><!-------Filter Side Bar Ends------->
+
+    <div class="col-md-8"><!-----Product Starts------>
+        <div class="row">
+        {% for x in products %}
+            <div class="col-md-4 mt-4">
+                <div class="card" style="width: 100%;">
+                    <img src="{{x.pimage.url}}" class="card-img-top" alt="..." width="100%" class="pity">
+                    <div class="card-body">
+                      <h5 class="card-title">{{x.name}}</h5>
+                      <p class="card-text">Rs.{{x.price}}</p>
+                      {% if x.cat == 1 %}
+                      <p class="card-text">Antivirus</p>
+                      {% elif x.cat == 2 %}
+                      <p class="card-text">Microsoft_office</p>
+                      {% else %}
+                      <p class="card-text">Windows</p>
+                      {% endif %}
+                      <a href="/pdetails/{{x.id}}" class="btn btn" style="background-color: rgb(166, 106, 250); color: white;">See Details</a>
+                    </div>
+                </div>           
+            </div><!-----Product 1 End--->
+        {% endfor %}
+        </div>
+    </div>  <!---------Product Ends------->
+
+
+</div><!-------Filter And Product Section Ends------->
+
+
+</div><!---Filter And Product Section Ends---->
+
+
+{% endblock 'main' %}

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link  href="{% static 'asset/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link  href="{% static 'asset/css/skyline.css' %}" rel="stylesheet"/>
+    <title>CybervisionX Website</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5 bg-light"><!------------Navigation Row Starts--------->
+            <div class="col-md-12"><!-------Navigation Bar Starts------->
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="/home" style="color: rgb(132, 53, 243);">CybervisionX</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/about">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/viewcart">Cart</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                          </li>
+                          {% if user.is_authenticated %}
+                          <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                          </li>
+                          {% else %}
+                          <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                          </li>
+                          {% endif %}
+                        </ul>
+
+                      </div>
+                    </div>
+                </nav>
+            </div><!----------Navigation Bar Ends--------------->
+        </div><!------------Navigation Row Ends------------>
+<!----Header Ends-->

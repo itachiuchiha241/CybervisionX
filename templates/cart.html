@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<!---Cart  Content--->
+<div class="row mt-5">
+    <div class="col-md-9">
+        <h5 class="text-white p-3 rounded-top" style="background-color: rgb(166, 106, 250);" >Customer Details</h5>
+        {% for x in products %}
+        {% if forloop.counter == 1 %}
+        <p><strong>Name:</strong>&nbsp;&nbsp;&nbsp;{{x.uid.username}}</p>
+        <p><strong>Mobile:</strong>&nbsp;&nbsp;&nbsp;56985225254</p>
+        <p><strong>Email:</strong>&nbsp;&nbsp;&nbsp;{{x.uid.email}}</p>
+        {% endif %}
+        {% endfor %}
+        <div class="row">
+            <h5 class="text-white p-3" style="background-color: rgb(166, 106, 250);">Product Details</h5>
+            {% for x in products %}
+            <div class="col-md-4">
+                <img src="{{x.pid.pimage.url}}" width="100%" alt="">
+            </div>
+            <div class="col-md-8">
+                <P><strong>Product Name:</strong>&nbsp;&nbsp;&nbsp;{{x.pid.name}}</p>
+                    <p><strong>Price:</strong>&nbsp;&nbsp;&nbsp;Rs.{{x.pid.price}}</p>
+                    {% if x.pid.cat == 1 %}
+                    <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Antivirus</p>
+                    {% elif x.pid.cat == 2 %}
+                    <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Microsoft_office</p>
+                    {% else %}
+                    <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Windows</p>
+                    {% endif %}
+                    <p><strong>Product Details:</strong>&nbsp;&nbsp;&nbsp;{{x.pid.pdetails}}</p>
+                    <p>
+                        <strong>QTY:</strong>
+                        <a href="/updateqty/0/{{x.id}}" ><button class="btn btn-danger">-</button></a>
+                        <input type="number" value="{{x.qty}}" >
+                        <a href="/updateqty/1/{{x.id}}" ><button href="/updateqty/1/{{x.id}}" class="btn btn-success">+</button></a>
+                    </p>
+                    <a href=""><button class="btn btn-danger">Remove</button></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!---Customer And Product Details--->
+    <div class="col-md-3 bg-light">
+        <h5 class="text-white p-3 rounded-top" style="background-color: rgb(166, 106, 250);">Total Amount</h5>
+        <p><strong>Total({{n}} itemes):</strong>&nbsp;Rs.{{total}}</p>
+        <hr>
+        <p><strong>Total Amount:</strong>&nbsp;Rs.{{total}}</p>
+        <a href="/placeorder"><button class="btn btn" style="background-color: rgb(166, 106, 250); color: white;">Place Order</button></a>
+    </div>
+    <!---Totale Amount Section--->
+</div>
+
+<!---Cart Section Ends--->
+
+{% endblock 'main' %}

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  href="{% static 'asset/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <title>Login</title>
+</head>
+<body>
+    <!--First div satrt -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 shadow mt-5 p-4 mx-auto">
+                <h2 class="ti">Login</h2>
+                {% if errmsg %}
+
+                <div class="alert alert-danger">
+                    {{errmsg}}
+                </div>
+
+                {% endif %}
+                <form method="POST" action="/login">
+                    {% csrf_token %}
+                    <div class="mb-3">   <!---Username-->
+                        <label for="input1" class="form-label">User name:</label>
+                        <input type="email" class="form-control" id="input1" name="uname" placeholder="User name enter here">
+                    </div>
+                    <div class="mb-3">  <!--Password-->
+                        <label for="input2" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="input2" name="upass" placeholder="Enter your password">
+                    </div>
+                    <div class="mb-3">   <!--Submit button-->
+                        <input type="submit" value="login" class="btn btn" style="background-color: rgb(132, 53, 243); color: white;" >
+                        Not User?<a href="/register" style="text-decoration: none;">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!--First div end-->
+
+    <script src="{% static 'asset/js/bootstrap.min.js' %}"></script>
+</body>

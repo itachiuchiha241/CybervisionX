@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+
+<!---Main  Content--->
+<div class="row mt-5">
+    {% for x in products %}
+    <div class="col-md-6 mt-5">
+        <img  src="{{x.pimage.url}}" width="100%" alt="" />
+    </div>
+
+    <div class="col-md-6">
+       <P><strong>Product Name:</strong>&nbsp;&nbsp;&nbsp;{{x.name}}</p>
+       <p><strong>Price:</strong>&nbsp;&nbsp;&nbsp;Rs.{{x.price}}</p>
+       {% if x.cat == 1 %}
+       <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Antivirus</p>
+       {% elif x.cat == 2 %}
+       <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Microsoft_office</p>
+       {% else %}
+       <p><strong>Category:</strong>&nbsp;&nbsp;&nbsp;Windows</p>
+       {% endif %}
+       <p><strong>Product Description:</strong>&nbsp;&nbsp;&nbsp;{{x.pdetails}}</p>
+       <a href="/addtocart/{{x.id}}"><button class="btn btn" style="background-color: rgb(162, 102, 246); color: white;">Add to Cart</button></a>&nbsp;&nbsp;&nbsp;
+       <a href="/viewcart"><button class="btn btn" style="background-color:rgb(162, 102, 246); color: white;">View Cart</button></a>&nbsp;&nbsp;&nbsp;
+       <a href="/home"><button class="btn btn"  style="background-color:rgb(162, 102, 246); color: white;">Shop More</button></a>
+       <br>
+       {% if success %}
+       <div class="alert alert-success">
+           {{success}}
+       </div>
+       {% endif %}
+       {% if msg %}
+        <div class="alert alert-danger">
+           {{msg}}
+        </div>
+       {% endif %}
+    </div>0
+    {% endfor %}
+</div>
+
+<!---Main Section Ends--->
+
+{% endblock 'main' %}
